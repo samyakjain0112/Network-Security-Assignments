@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <h1 style="font-size:60; text-align:center; color: rgb(236, 236, 241);">Changing Plain Text to Cipher Text</h1>
+  <body style="background-image: url('hello.jpeg');"></body>
+  <div class="flex-container">
+    <div class="flex-child">
+      <h2 style="font-size:60; text-align: center; color: rgb(242, 247, 246);">Plain text</h2>
+        <div class="flex-child magenta" style="height: 400px;" id="box1">
+          <textarea style="font-size:60; color:rgb(14, 57, 186)" id="text1"></textarea>
+        </div>
+        </div>
+        <div class="flex-child">
+          <h2 style="font-size:60; text-align: center; color: rgb(242, 247, 246);">Cipher text</h2>
+
+        <div class="flex-child green" style="height: 400px;" id="box2">
+          <textarea style="font-size:60; color:rgb(225, 125, 19)" id="text2"></textarea>
+        </div>
+        
+      </div>
+      <script>
+        $('#text1').keyup(function(){ 
+          var string=$('#text1').val();  
+          var str=cypher(string);
+          $('#text2').val(str) 
+        })
+        $('#text2').keyup(function(){ 
+          var string=$('#text2').val();  
+          var str=cypher(string);
+          $('#text1').val(str) 
+        })
+        function cypher(string){
+          str='';
+          for( let i=0;i<string.length;i++){
+            var ch=string[i];
+            if(lower_case(ch)){
+              ch=String.fromCharCode(122 -ch.charCodeAt(0)+97);
+            }
+            else if(upper_case(ch)){
+              ch=String.fromCharCode(90 -ch.charCodeAt(0)+65);
+            }
+            str+=ch; 
+          }
+          return str;
+        }
+        function lower_case(ch){ 
+          if(ch>='a' && ch<='z') return true;
+          return false;
+        }
+        function upper_case(ch){ 
+          if(ch>='A' && ch<='Z') return true;
+          return false;
+        }
+      </script>
+</html>
