@@ -1,1 +1,1 @@
-Implementation of El Gaamal algorithm in a python
+## Implementation of El Gaamal algorithm in a python
